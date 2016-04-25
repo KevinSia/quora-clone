@@ -3,6 +3,7 @@
 - create migration for users (done)
 
 - create user model:
+	- validations (done):
 	- email (unique: true)
 	- encrypted_password
 	- username
