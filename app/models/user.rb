@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   end
 
   # used to store hash in db
-  def digest_password=(new_password)
+  def save_password=(new_password)
     @password = Password.create(new_password)
     self.encrypted_password = @password
   end

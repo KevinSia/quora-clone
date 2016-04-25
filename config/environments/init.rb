@@ -10,10 +10,11 @@ require 'pathname'
 require 'byebug'
 require 'bcrypt'
 
-	# database
+  # database
 require 'pg'
 require 'active_record'
 require 'logger'
+require 'faker'
 
 	# sinatra
 require 'sinatra'

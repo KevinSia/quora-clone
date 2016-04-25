@@ -1,10 +1,10 @@
-<h2>I wanna join!</h2>
+<h2 class='h2_title'>I wanna join!</h2>
 
 <% if @error_messages %>
 	<p><%= @error_messages %></p>
 <% end %>
 
-<form action='/signup' method='post'>
+<form id='signup' action='/signup' method='post'>
 	<input type='text' placeholder='Your username' name='user[username]'>
 	<input type='email' placeholder='Your email' name='user[email]'>
 	<input type='password' placeholder='Your password(min. 6 characters)' name='password'>

@@ -1,7 +1,9 @@
-before /\/?users?\/?\S*/ do
-  unless logged_in?
-    @error_messages = 'Please log in to join the community'
-    redirect to '/login'
+['/user/*', '/users/*'].each do |path|
+  before path do
+    unless logged_in?
+      @error_messages = 'Log in to join the community!'
+      redirect to '/login'
+    end
   end
 end
 
@@ -10,7 +12,9 @@ get '/users/index' do
   erb :'users/index'
 end
 
-get 'users/:id' do
+# users#show
+get '/users/:id' do
   @user = User.find(params[:id])
   erb :'users/profile'
 end
+

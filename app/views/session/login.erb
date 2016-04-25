@@ -1,10 +1,10 @@
-<h2>Login</h2>
+<h2 class='h2_title'>Login now!</h2>
 
 <% if @error_messages %>
 	<p><%= @error_messages %></p>
 <% end %>
 
-<form action='/login' method='post'>
+<form id='login' action='/login' method='post'>
 	<input type='email' placeholder='Your email' name='email'>
 	<input type='password' placeholder='Your password' name='password'>
 	<input type='submit' value='To space!'>

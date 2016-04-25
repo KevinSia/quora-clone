@@ -4,7 +4,7 @@ end
 
 post '/signup' do
   @user = User.new(params[:user])
-  @user.digest_password = params[:password]
+  @user.save_password = params[:password]
   if @user.save
     login @user
     erb :'users/index'
