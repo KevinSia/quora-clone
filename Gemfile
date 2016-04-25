@@ -7,6 +7,9 @@ source 'https://rubygems.org'
 gem 'sinatra'
 gem 'sinatra-contrib'
 
+# Password encryption
+gem 'bcrypt'
+
 # Adding thin gem as advised
 gem 'thin'
 
@@ -27,6 +30,7 @@ gem 'rspec'
 group :development, :test do
 	# Adding shotgun for local web hosting
 	gem 'shotgun'
+  gem 'byebug'
 end
 
 group :production do

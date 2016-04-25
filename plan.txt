@@ -1,0 +1,9 @@
+- bundle install (done)
+
+- create migration for users (done)
+
+- create user model:
+	- email (unique: true)
+	- encrypted_password
+	- username
+	- timestamps
