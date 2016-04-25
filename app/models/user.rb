@@ -1,8 +1,5 @@
 class User < ActiveRecord::Base
 
-  # raw password will not be saved as password is not included in the table_col array
-  attr_accessor :password
-
   # libraries
   include BCrypt
   # has_secure_password
@@ -15,9 +12,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true,
                     uniqueness: true,
                     format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
-  validates :encrypted_password, presence: true,
-                                allow_nil: true # avoid conflict with has_secure_password
-  validates :password, length: { minimum: 6 }
+  validates :encrypted_password, presence: true
+  validates :user_password, length: { minimum: 6 }
 
   # callbacks
   before_save :downcase_email
@@ -27,8 +23,25 @@ class User < ActiveRecord::Base
     self.email = email.downcase
   end
 
-  def digest_password=(new_password)
-    digested_password = Password.create(new_password)
-    self.encrypted_password = digested_password
+  # used in login
+  def password
+    @password ||= Password.new(encrypted_password)
   end
+
+  # used to login
+  def authenticate(login_password)
+    self.password == login_password
+  end
+
+  # used to store hash in db
+  def digest_password=(new_password)
+    @password = Password.create(new_password)
+    self.encrypted_password = @password
+  end
+
+  # used for length validation
+  def user_password
+    @password
+  end
+
 end

@@ -8,3 +8,12 @@
 	- encrypted_password
 	- username
 	- timestamps
+
+
+
+
+if @password.nil?
+	@password = Password.new(password_hash)
+else
+	@password
+end
