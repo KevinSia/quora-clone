@@ -29,7 +29,7 @@
 	- my questions
 	- home
 
-- question_controller
+- CRUD question (done, left ajax request for answer)
 	- index (not needed? same with user homepage)
 	- show
 	- new
@@ -37,4 +37,6 @@
 	- edit
 	- update
 	- delete
+
+- fix table (votes table, remove votes from q and a)
 

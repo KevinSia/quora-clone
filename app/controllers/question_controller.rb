@@ -1,6 +1,6 @@
 # show all questions (same action with /home)
 get '/questions' do
-  @questions = Question.includes(:users).all
+  @questions = Question.includes(:users).all.order(created_at: :desc)
   erb :'questions/index'
 end
 
@@ -18,27 +18,38 @@ end
 
 # create a question object and redirect back to index page
 post '/questions' do
-  byebug
   params[:question][:user_id] = current_user.id
   @question = Question.new(params[:question])
   if @question.save
     redirect "/questions/#{@question.id}"
   else
-    @error_message = 'Invalid input :( Please try again!'
+    @error_message = "Invalid input :( Please try again!"
     erb :'questions/new'
   end
 end
 
 # render a page to edit a question
 get '/questions/:id/edit' do
+  @question = Question.find(params[:id])
+  erb :'questions/edit'
 end
 
 # update a question and redirect to show page
 # todo : make put request
 post '/questions/:id' do
+  @question = Question.find(params[:id])
+  if @question.update(params[:question])
+    redirect to "/questions/#{@question.id}"
+  else
+    @error_message = "Invalid input :( Please try again!"
+    erb :'questions/edit'
+  end
 end
 
 # deletes a question with a button
-# todo : make delete request
+# todo : make into form, show confirm box and send ajax request
 get '/questions/:id/delete' do
+  @question = Question.find(params[:id])
+  @question.destroy
+  redirect to "/home"
 end

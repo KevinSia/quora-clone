@@ -2,6 +2,11 @@
 	<%= @question.caption %>
 	<span>
 		<%= @question.user.username %>
+		<% if current_user == @question.user %>
+			<a href="/questions/<%= @question.id %>/edit">Edit</a>
+			<!-- make form and ajax request-->
+			<a href="/questions/<%= @question.id %>/delete">Delete</a>
+		<% end %>
 	</span>
 </h2>
 <p><%= @question.description %><p>

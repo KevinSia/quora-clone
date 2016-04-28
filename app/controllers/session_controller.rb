@@ -1,3 +1,11 @@
+# session validation
+before do
+  paths = ['/login', '/signup', '/signin']
+  pass if logged_in? || paths.include?(request.path_info)
+  @error_messages = 'You must login to access this page!'
+  redirect to '/login'
+end
+
 get '/signup' do
   erb :'session/signup'
 end

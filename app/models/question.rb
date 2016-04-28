@@ -3,5 +3,5 @@ class Question < ActiveRecord::Base
   has_many :answers, dependent: :destroy
 
   validates :description, presence: true
-  validates :caption, presence: true
+  validates :caption, presence: true, length: { maximum: 50 }
 end

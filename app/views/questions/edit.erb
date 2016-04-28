@@ -1,0 +1,10 @@
+<% if @error_message %>
+	<p><%= @error_message %></p>
+<% end %>
+
+<form id='edit_question' method='post' action='/questions/<%= @question.id %>'>
+	Caption: <input type='text' name='question[caption]' value='<%= @question.caption %>'>
+	<p>Description:</p>
+	<textarea name='question[description]' form='edit_question'><%= @question.description %></textarea>
+	<input type='submit' value='Edit!'>
+</form>
