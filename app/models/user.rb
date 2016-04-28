@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   #associations
   has_many :questions
   has_many :answers
+  has_many :question_votes
+  has_many :answer_votes
 
   # libraries
   include BCrypt

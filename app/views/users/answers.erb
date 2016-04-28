@@ -3,6 +3,7 @@
 	<% @answers.each do |a| %>
 		<tr>
 			<td><p><%= a.content %></p></td>
+			<td><a href="/questions/<%= a.question.id %>">Show question</a></td>
 		</tr>
 	<% end %>
 </table>

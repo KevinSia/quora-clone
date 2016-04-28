@@ -19,7 +19,7 @@ end
 # show all answers of the user
 get '/users/:id/answers' do
   @user = User.find(params[:id])
-  @answers = @user.answers.order(updated_at: :desc)
+  @answers = @user.answers.joins(:question).order(updated_at: :desc)
   if @answers
     erb :'users/answers'
   else

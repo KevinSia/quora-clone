@@ -3,8 +3,8 @@
 <% end %>
 
 <form id='new_question' method='post' action='/questions'>
-	Caption: <input type='text' name='question[caption]'>
+	Caption: <input type='text' name='question[caption]' required>
 	<p>Description:</p>
-	<textarea name='question[description]' form='new_question'></textarea>
+	<textarea name='question[description]' form='new_question' required></textarea>
 	<input type='submit' value='Ask!'>
 </form>

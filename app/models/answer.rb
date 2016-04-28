@@ -1,7 +1,7 @@
 class Answer < ActiveRecord::Base
 	belongs_to :user
   belongs_to :question
-  has_many :answer_votes
+  has_many :votes, class_name: "AnswerVote"
 
   validates :content, presence: true
 end

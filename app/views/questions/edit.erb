@@ -3,8 +3,8 @@
 <% end %>
 
 <form id='edit_question' method='post' action='/questions/<%= @question.id %>'>
-	Caption: <input type='text' name='question[caption]' value='<%= @question.caption %>'>
+	Caption: <input type='text' name='question[caption]' value='<%= @question.caption %>' required>
 	<p>Description:</p>
-	<textarea name='question[description]' form='edit_question'><%= @question.description %></textarea>
+	<textarea name='question[description]' form='edit_question' required><%= @question.description %></textarea>
 	<input type='submit' value='Edit!'>
 </form>

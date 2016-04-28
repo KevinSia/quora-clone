@@ -7,19 +7,28 @@
 			<!-- make form and ajax request-->
 			<a href="/questions/<%= @question.id %>/delete">Delete</a>
 		<% end %>
+		<form style='display:inline;' method='post' action='/questions/<%= @question.id %>/up'>
+			<input type='submit' value='+'>
+		</form>
+		<form style='display:inline;' method='post' action='/questions/<%= @question.id %>/down'>
+			<input type='submit' value='-'>
+		</form>
 	</span>
 </h2>
 
 <p><%= @question.description %><p>
 
-<form method='post' action='/questions/<%= @question.id%>/answers/new'>
+<p>Upvotes: <%= @upvotes %></p>
+<p>Downvotes: <%= @downvotes %></p>
+
+<form method='post' action='/questions/<%= @question.id %>/answers/new'>
 	<input type='text' name='answer[content]' placeholder='Answer the question!'>
 	<input type='submit' value='Answer!'>
 </form>
 
-<% if @error_message %>
-	<p><%= @error_message %></p>
-<% end %>
+
+<p><%= @error_message if @error_message %></p>
+
 
 <table>
 	<% @question.answers.each do |answer| %>

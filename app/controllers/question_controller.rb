@@ -1,6 +1,6 @@
 # show all questions (same action with /home)
 get '/questions' do
-  @questions = Question.includes(:users).all.order(created_at: :desc)
+  @questions = Question.includes(:user).all.order(created_at: :desc)
   erb :'questions/index'
 end
 
@@ -12,6 +12,8 @@ end
 # show a question (along with its answers)
 get '/questions/:id' do
   @question = Question.includes(:answers).find(params[:id])
+  @upvotes = @question.votes.where(point: 1).count
+  @downvotes = @question.votes.where(point: -1).count
   erb :'questions/show'
 end
 
