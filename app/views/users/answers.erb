@@ -1,0 +1,9 @@
+<h1>Your answers:</h1>
+<table>
+	<% @answers.each do |a| %>
+		<tr>
+			<td><p><%= a.content %></p></td>
+			<td><p><%= a.votes %></p></td>
+		</tr>
+	<% end %>
+</table>

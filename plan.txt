@@ -1,19 +1,40 @@
 - bundle install (done)
 
-- create migration for users (done)
+- create migration for users, questions, answers (done)
 
-- create user model:
+- create user model (done):
 	- validations (done):
-	- email (unique: true)
-	- encrypted_password
-	- username
-	- timestamps
+		- email (unique: true)
+		- password (length)
 
+- create question model (done):
+	- associations
+	- validations (done):
+		- description (presence)
+		- title (presence, length(x))
 
+- create answer model (done):
+	- associations
+	- validations (done):
+		- content (presence)
 
+- session_controller (done)
+	- login
+	- logout
+	- signup
 
-if @password.nil?
-	@password = Password.new(password_hash)
-else
-	@password
-end
+- user_controller (done)
+	- profile
+	- my answers
+	- my questions
+	- home
+
+- question_controller
+	- index (not needed? same with user homepage)
+	- show
+	- new
+	- create
+	- edit
+	- update
+	- delete
+

@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
 
+  #associations
+  has_many :questions
+  has_many :answers
+
   # libraries
   include BCrypt
   # has_secure_password
@@ -10,7 +14,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true,
                        length: { maximum: 30 }
   validates :email, presence: true,
-                    uniqueness: true,
+                    uniqueness: { case_sensitive: false },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
   validates :encrypted_password, presence: true
   validates :user_password, length: { minimum: 6 }

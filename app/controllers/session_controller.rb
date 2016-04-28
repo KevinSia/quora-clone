@@ -7,7 +7,7 @@ post '/signup' do
   @user.save_password = params[:password]
   if @user.save
     login @user
-    erb :'users/index'
+    redirect to '/'
   else
     @error_messages = @user.errors.messages
     erb :'session/signup'
@@ -23,7 +23,7 @@ post '/login' do
   @user = User.find_by(email: params[:email])
   if @user && @user.authenticate(params[:password])
     login @user
-    erb :'users/index'
+    redirect to '/'
   else
     @error_messages = "Invalid email or password. Please try again"
     erb :'session/login'
@@ -32,5 +32,5 @@ end
 
 get '/logout' do
   logout
-  erb :'static/index'
+  redirect to '/'
 end

@@ -9,17 +9,18 @@ admin.save
   user.save
 end
 
-20.times do |index|
-  Question.create(description: Faker::Hipster.paragraph(rand(3..6), true, rand(4..6)),
-                  votes: rand(1..20),
-                  user_id: index)
+User.all.each do |user|
+  rand(5..10).times do
+    user.questions.create(description: Faker::Hipster.paragraph(rand(3..6), true, rand(4..6)),
+                          caption: Faker::Hipster.sentence,
+                          votes: rand(1..20))
+  end
 end
 
-20.times do |index|
+Question.all.each do |question|
   rand(5..10).times do
-    Answer.create(content: Faker::Lorem.paragraph(rand(3..6), true, rand(4..6)),
-                  votes: rand(1..20),
-                  user_id: rand(1..20),
-                  question_id: index)
+    question.answers.create(content: Faker::Lorem.paragraph(rand(3..6), true, rand(4..6)),
+                            votes: rand(1..20),
+                            user_id: rand(1..20))
   end
 end

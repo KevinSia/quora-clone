@@ -1,0 +1,10 @@
+<h1>Your questions:</h1>
+<table>
+	<% @questions.each do |q| %>
+		<tr>
+			<td><p><%= q.caption %></p></td>
+			<td><p><%= q.description %></p></td>
+			<td><p><%= q.votes %></p></td>
+		</tr>
+	<% end %>
+</table>

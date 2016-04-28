@@ -1,0 +1,16 @@
+<h2>
+	<%= @question.caption %>
+	<span>
+		<%= @question.user.username %>
+	</span>
+</h2>
+<p><%= @question.description %><p>
+<table>
+	<% @question.answers.each do |answer| %>
+		<tr>
+			<td style:'width:50px; word-wrap:break-word;'><%= answer.content %></td>
+			<td><%= answer.user.username %></td>
+			<td><%= answer.votes %></td>
+		</tr>
+	<% end %>
+</table>

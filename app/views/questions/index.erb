@@ -1,0 +1,16 @@
+<table>
+	<% @questions.each do |q| %>
+		<tr>
+			<td>
+				<h2>
+					<a href='/questions/<%= q.id %>'><%= q.caption %></a>
+				</h2>
+			</td>
+			<td><%= q.description %></td>
+			<td style='width:100px;'>Asked by: <%= q.user.username %></td>
+			<% if q.user == current_user %>
+				<td><a href="/questions/<%= q.id %>/edit">Edit</a></td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>
