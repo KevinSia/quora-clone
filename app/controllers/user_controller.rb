@@ -7,7 +7,7 @@ end
 # show all questions of the user
 get '/users/:id/questions' do
   @user = User.find(params[:id])
-  @questions = @user.questions
+  @questions = @user.questions.order(updated_at: :desc)
   if @questions
     erb :'users/questions'
   else
@@ -19,8 +19,8 @@ end
 # show all answers of the user
 get '/users/:id/answers' do
   @user = User.find(params[:id])
-  @answers = @user.answers
-  if @questions
+  @answers = @user.answers.order(updated_at: :desc)
+  if @answers
     erb :'users/answers'
   else
     @error = "You have not answered once :("

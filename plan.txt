@@ -38,5 +38,16 @@
 	- update
 	- delete
 
+- CRUD answer
+	- index (in question#show)
+	- new (in question#show)
+	- create
+	- edit
+	- update
+	- delete
+
+- question#show => answer should includes(:user)
+- votes seed
 - fix table (votes table, remove votes from q and a)
+- two login pages (landing page and redirect page)
 

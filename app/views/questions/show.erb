@@ -9,13 +9,27 @@
 		<% end %>
 	</span>
 </h2>
+
 <p><%= @question.description %><p>
+
+<form method='post' action='/questions/<%= @question.id%>/answers/new'>
+	<input type='text' name='answer[content]' placeholder='Answer the question!'>
+	<input type='submit' value='Answer!'>
+</form>
+
+<% if @error_message %>
+	<p><%= @error_message %></p>
+<% end %>
+
 <table>
 	<% @question.answers.each do |answer| %>
 		<tr>
 			<td style:'width:50px; word-wrap:break-word;'><%= answer.content %></td>
 			<td><%= answer.user.username %></td>
-			<td><%= answer.votes %></td>
+			<% if current_user == answer.user %>
+				<td><a href="/answers/<%= answer.id %>/edit">Edit</a></td>
+				<td><a href="/answers/<%= answer.id %>/delete">Delete</a></td>
+			<% end %>
 		</tr>
 	<% end %>
 </table>

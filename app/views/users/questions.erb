@@ -2,9 +2,8 @@
 <table>
 	<% @questions.each do |q| %>
 		<tr>
-			<td><p><%= q.caption %></p></td>
+			<td><a href='/questions/<%= q.id %>'><%= q.caption %></a></td>
 			<td><p><%= q.description %></p></td>
-			<td><p><%= q.votes %></p></td>
 		</tr>
 	<% end %>
 </table>
