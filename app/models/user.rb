@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
 
   #associations
-  has_many :questions
-  has_many :answers
-  has_many :question_votes
-  has_many :answer_votes
+  has_many :questions, dependent: :destroy
+  has_many :answers, dependent: :destroy
+  has_many :question_votes, dependent: :destroy
+  has_many :answer_votes, dependent: :destroy
 
   # libraries
   include BCrypt

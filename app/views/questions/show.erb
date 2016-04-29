@@ -7,17 +7,16 @@
 			<!-- make form and ajax request-->
 			<a href="/questions/<%= @question.id %>/delete">Delete</a>
 		<% end %>
-		<form style='display:inline;' method='post' action='/questions/<%= @question.id %>/up'>
+		<form id='question_upvote'style='display:inline;' method='post' action='/questions/<%= @question.id %>/up'>
 			<input type='submit' value='+'>
 		</form>
-		<form style='display:inline;' method='post' action='/questions/<%= @question.id %>/down'>
+		<form id='question_downvote'style='display:inline;' method='post' action='/questions/<%= @question.id %>/down'>
 			<input type='submit' value='-'>
 		</form>
 	</span>
 </h2>
 
 <p><%= @question.description %><p>
-
 <p>Upvotes: <%= @upvotes %></p>
 <p>Downvotes: <%= @downvotes %></p>
 
@@ -31,13 +30,23 @@
 
 
 <table>
-	<% @question.answers.each do |answer| %>
+	<% @question.answers.includes(:votes).each do |answer| %>
 		<tr>
 			<td style:'width:50px; word-wrap:break-word;'><%= answer.content %></td>
 			<td><%= answer.user.username %></td>
 			<% if current_user == answer.user %>
 				<td><a href="/answers/<%= answer.id %>/edit">Edit</a></td>
 				<td><a href="/answers/<%= answer.id %>/delete">Delete</a></td>
+				<td>
+					<form id= 'answer_upvote' style='display:inline;' method='post' action='/answers/<%= answer.id %>/up'>
+						<input type='submit' value='Upvote (<%= answer.upvote_count %>)'>
+					</form>
+				</td>
+				<td>
+					<form id= 'answer_downvote' style='display:inline;' method='post' action='/answers/<%= answer.id %>/down'>
+						<input type='submit' value='Downvote (<%= answer.downvote_count %>)'>
+					</form>
+				</td>
 			<% end %>
 		</tr>
 	<% end %>

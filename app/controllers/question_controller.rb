@@ -1,6 +1,6 @@
 # show all questions (same action with /home)
 get '/questions' do
-  @questions = Question.includes(:user).all.order(created_at: :desc)
+  @questions = Question.includes(:votes, :user).all.order(created_at: :desc)
   erb :'questions/index'
 end
 

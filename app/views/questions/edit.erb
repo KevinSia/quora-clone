@@ -2,6 +2,8 @@
 	<p><%= @error_message %></p>
 <% end %>
 
+<h2>Edit question</h2>
+
 <form id='edit_question' method='post' action='/questions/<%= @question.id %>'>
 	Caption: <input type='text' name='question[caption]' value='<%= @question.caption %>' required>
 	<p>Description:</p>

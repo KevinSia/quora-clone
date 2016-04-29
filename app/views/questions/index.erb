@@ -7,6 +7,16 @@
 				</h2>
 			</td>
 			<td><%= q.description %></td>
+			<td>
+				<form style='display:inline;' method='post' action='/questions/<%= q.id %>/up'>
+				<input type='submit' value='Upvote (<%= q.upvote_count %>)'>
+				</form>
+			</td>
+			<td>
+				<form style='display:inline;' method='post' action='/questions/<%= q.id %>/down'>
+					<input type='submit' value='Downvote (<%= q.downvote_count %>)'>
+				</form>
+			</td>
 			<td style='width:100px;'>Asked by: <%= q.user.username %></td>
 			<% if q.user == current_user %>
 				<td><a href="/questions/<%= q.id %>/edit">Edit</a></td>

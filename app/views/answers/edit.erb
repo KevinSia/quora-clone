@@ -2,6 +2,8 @@
 	<p><%= @error_message %></p>
 <% end %>
 
+<h2>Edit Answer</h2>
+
 <form id='edit_answer' method='post' action='/answers/<%= @answer.id %>'>
 	Content:
 	<textarea name='answer[content]' form='edit_answer' required><%= @answer.content %></textarea>

@@ -1,15 +1,15 @@
 # upvote
 post '/questions/:id/up' do
-  @vote = current_user.question_votes.where(question_id: params[:id]).first
-  @vote ||= current_user.question_votes.create(question_id: params[:id])
+  # request.xhr?
+  @vote = current_user.question_votes.find_or_create_by(question_id: params[:id])
   @vote.update_attributes(point: 1)
-  redirect to "/questions/#{params[:id]}"
+  redirect back
 end
 
 # downvote
 post '/questions/:id/down' do
-  @vote = current_user.question_votes.where(question_id: params[:id]).first
-  @vote ||= current_user.question_votes.create(question_id: params[:id])
+  # request.xhr?
+  @vote = current_user.question_votes.find_or_create_by(question_id: params[:id])
   @vote.update_attributes(point: -1)
-  redirect to "/questions/#{params[:id]}"
+  redirect back
 end
