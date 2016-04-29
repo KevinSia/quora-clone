@@ -7,10 +7,10 @@
 			<!-- make form and ajax request-->
 			<a href="/questions/<%= @question.id %>/delete">Delete</a>
 		<% end %>
-		<form id='question_upvote_<%= q.id %>' style='display:inline;' method='post' action='/questions/<%= @question.id %>/up'>
+		<form id='question_upvote_<%= @question.id %>' style='display:inline;' method='post' action='/questions/<%= @question.id %>/up'>
 			<input type='submit' value='+'>
 		</form>
-		<form id='question_downvote_<%= q.id %>' style='display:inline;' method='post' action='/questions/<%= @question.id %>/down'>
+		<form id='question_downvote_<%= @question.id %>' style='display:inline;' method='post' action='/questions/<%= @question.id %>/down'>
 			<input type='submit' value='-'>
 		</form>
 	</span>

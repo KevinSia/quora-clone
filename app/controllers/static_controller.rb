@@ -7,6 +7,8 @@ get '/' do
 end
 
 get '/home' do
-  @questions = Question.includes(:user).all.order(updated_at: :desc)
+  @questions = Question.includes(:votes, :user).all.order(created_at: :desc)
+  @upvotes = QuestionVote.group(:question_id).where(point: 1).count
+  @downvotes = QuestionVote.group(:question_id).where(point: -1).count
   erb :'questions/index'
 end

@@ -1,5 +1,6 @@
-$(document).ready(function(){
 
+$(document).ready(function(){
+	// can be refactored into one single event handler
 	$("form[id^=question_upvote]").on("submit", function(event){
 		event.preventDefault();
 		$.ajax({
