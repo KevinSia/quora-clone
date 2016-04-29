@@ -8,13 +8,13 @@
 			</td>
 			<td><%= q.description %></td>
 			<td>
-				<form style='display:inline;' method='post' action='/questions/<%= q.id %>/up'>
-				<input type='submit' value='Upvote (<%= q.upvote_count %>)'>
+				<form id='question_upvote_<%= q.id %>' style='display:inline;' method='post' action='/questions/<%= q.id %>/up'>
+					<input id='upvote_<%= q.id%>' type='submit' value='Upvote (<%= q.upvote_count %>)'>
 				</form>
 			</td>
 			<td>
-				<form style='display:inline;' method='post' action='/questions/<%= q.id %>/down'>
-					<input type='submit' value='Downvote (<%= q.downvote_count %>)'>
+				<form id='question_downvote_<%= q.id %>' style='display:inline;' method='post' action='/questions/<%= q.id %>/down'>
+					<input id='downvote_<%= q.id%>' type='submit' value='Downvote (<%= q.downvote_count %>)'>
 				</form>
 			</td>
 			<td style='width:100px;'>Asked by: <%= q.user.username %></td>

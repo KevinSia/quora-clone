@@ -18,7 +18,7 @@ get '/questions/:id' do
 end
 
 
-# create a question object and redirect back to index page
+# create a question object and redirects back to index page
 post '/questions' do
   params[:question][:user_id] = current_user.id
   @question = Question.new(params[:question])

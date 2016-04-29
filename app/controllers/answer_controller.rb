@@ -4,6 +4,7 @@ post '/questions/:question_id/answers/new' do
   params[:answer][:question_id] = params[:question_id]
   @answer = Answer.new(params[:answer])
 
+  # need to be fixed
   unless @answer.save
     @error_message = "Invalid input :( Please try again!"
   end
