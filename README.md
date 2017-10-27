@@ -1,4 +1,5 @@
-#Sinatra Web Server
+# Sinatra Web Server
+
 ## Repo details
 | Details   |  | 
 | :--------------- | -------: |
